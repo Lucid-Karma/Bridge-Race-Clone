@@ -38,26 +38,6 @@ public class ObjectPooler : Singleton<ObjectPooler>
         }
     }
 
-    /*private void OnEnable()
-    {
-        EventManager.OnRightMove.AddListener(SpecificPosr);
-        EventManager.OnLeftMove.AddListener(SpecificPosl);
-        //EventManager.OnLevelStart.AddListener(GetObjFirstTime);
-        EventManager.OnPlayerStartedRunning.AddListener(() => doesPlayerExist = true);
-        EventManager.OnLevelFail.AddListener(() => doesPlayerExist = false);
-        TrackManager.OnTrackCreate += Getobject;
-    }
-
-    private void OnDisable()
-    {
-        EventManager.OnRightMove.RemoveListener(SpecificPosr);
-        EventManager.OnLeftMove.RemoveListener(SpecificPosl);
-        //EventManager.OnLevelStart.RemoveListener(GetObjFirstTime);
-        EventManager.OnPlayerStartedRunning.RemoveListener(() => doesPlayerExist = true);
-        EventManager.OnLevelFail.RemoveListener(() => doesPlayerExist = false);
-        TrackManager.OnTrackCreate -= Getobject;
-    }*/
-
     void Start()
     {
         GetObject();
@@ -94,16 +74,6 @@ public class ObjectPooler : Singleton<ObjectPooler>
         return null;
     }
 
-    /*public Vector3 GetObjectPosition()
-    {
-        int random = Random.Range(0, possiblePos.Length);
-        int x = possiblePos[random];
-        random = Random.Range(0, possiblePos.Length);
-        int z = possiblePos[random];
-        offset = new Vector3(x, 1, z);
-        return offset;
-    }*/
-
     private void GetObject()
     {
         targetObjCount = 10;
@@ -128,10 +98,5 @@ public class ObjectPooler : Singleton<ObjectPooler>
             }
         }
         Debug.Log(count);
-    }
-
-    public GameObject ChangePosition(Collider stackObj)
-    {
-        return stackObj.gameObject;
     }
 }
