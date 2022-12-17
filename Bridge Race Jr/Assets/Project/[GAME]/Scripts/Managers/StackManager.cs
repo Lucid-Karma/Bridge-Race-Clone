@@ -4,26 +4,53 @@ using UnityEngine;
 
 public class StackManager : Singleton<StackManager>
 {
-    //private GameObject stackObject;
+    public List<GameObject> stackedObjects = new List<GameObject>();
+
+    #region CollectVariables
     [SerializeField] private GameObject stackParent;
     [SerializeField] private GameObject refObject;
     private float distanceBetweenObjects;
+    #endregion
 
-    /*void Start()
+    #region UseVariables
+    [SerializeField] private GameObject stairParent;
+    [SerializeField] private GameObject refStair;
+    private float distanceBetweenStairsY, distanceBetweenStairsZ;
+    #endregion
+
+    void Start()
     {
-        stackObject = ObjectPooler.Instance.ChangePosition(stack);
-        distanceBetweenObjects = stackObject.transform.localScale.y;
-    }*/
+        distanceBetweenObjects = refObject.transform.localScale.y;
+
+        distanceBetweenStairsY = refStair.transform.localScale.y;
+        distanceBetweenStairsZ = refStair.transform.localScale.z;
+    }
 
     public void CollectStackObject(GameObject stack)
     {
-        distanceBetweenObjects = stack.transform.localScale.y;
         stack.transform.parent = stackParent.transform;
         Vector3 desiredPos = refObject.transform.localPosition;
         desiredPos.y += distanceBetweenObjects;
         
-        stack.transform.localPosition = desiredPos; //new Vector3(stackParent.transform.position.x, distanceBetweenObjects, stackParent.transform.position.z);
+        stack.transform.localPosition = desiredPos; 
+        
+        refObject.transform.position = stack.transform.position;
+        stackedObjects.Add(stack);
+    }
 
-        refObject.transform.localPosition = stack.transform.localPosition;
+    public void UseStackObject()
+    {
+        //for (int i = 0; i < stackedObjects.Count; i++) 
+        //{
+            stackedObjects[stackedObjects.Count-1].transform.parent = stairParent.transform;
+            Vector3 desiredPos = refStair.transform.localPosition;
+            desiredPos.y += distanceBetweenStairsY;
+            desiredPos.z += distanceBetweenStairsZ;
+
+            stackedObjects[stackedObjects.Count-1].transform.localPosition = desiredPos;
+
+            refStair.transform.position = stackedObjects[stackedObjects.Count-1].transform.position;
+            stackedObjects.Remove(stackedObjects[stackedObjects.Count-1]);
+        //}
     }
 }

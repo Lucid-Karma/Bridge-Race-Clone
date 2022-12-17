@@ -29,5 +29,14 @@ public class Player : MonoBehaviour
         {
             collectable.Collect();
         }
+
+        if (other.gameObject.CompareTag("Stair"))
+        {
+            StackManager.Instance.UseStackObject();
+            if (collectable != null)
+            {
+                StackManager.Instance.UseStackObject();
+            }
+        }
    }
 }
