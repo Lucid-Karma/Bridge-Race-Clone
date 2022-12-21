@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StackObject : MonoBehaviour, ICollectable
+public class StackObject : MonoBehaviour, IInteractable
 {
-    public void Collect()
+    public bool isBuilding { get; set; }
+
+    public void Interact()
     {
         StackManager.Instance.CollectStackObject(gameObject);
     }
