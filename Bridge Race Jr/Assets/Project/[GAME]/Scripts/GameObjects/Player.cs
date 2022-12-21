@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : CharacterBase
 {
     public float moveSpeed;
     public FixedJoystick joystick;
@@ -18,25 +18,17 @@ public class Player : MonoBehaviour
         rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);*/
 
         //Vector3 direction = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
-        rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, joystick.Vertical * moveSpeed * Time.fixedDeltaTime);
+        //rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, joystick.Vertical * moveSpeed * Time.fixedDeltaTime);
+        Move();
     }
 
-   void OnTriggerEnter(Collider other)
+   public override void OnTriggerEnter(Collider other)
    {
-        ICollectable collectable = other.GetComponent<ICollectable>();
+        base.OnTriggerEnter(other);
+   }
 
-        if (collectable != null)
-        {
-            collectable.Collect();
-        }
-
-        if (other.gameObject.CompareTag("Stair"))
-        {
-            StackManager.Instance.UseStackObject();
-            if (collectable != null)
-            {
-                StackManager.Instance.UseStackObject();
-            }
-        }
+   public override void Move()
+   {
+       rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, joystick.Vertical * moveSpeed * Time.fixedDeltaTime); 
    }
 }

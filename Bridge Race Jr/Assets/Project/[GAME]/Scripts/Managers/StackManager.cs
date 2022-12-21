@@ -42,15 +42,15 @@ public class StackManager : Singleton<StackManager>
     {
         //for (int i = 0; i < stackedObjects.Count; i++) 
         //{
-            stackedObjects[stackedObjects.Count-1].transform.parent = stairParent.transform;
+            stackedObjects[0].transform.parent = stairParent.transform;
             Vector3 desiredPos = refStair.transform.localPosition;
             desiredPos.y += distanceBetweenStairsY;
             desiredPos.z += distanceBetweenStairsZ;
 
-            stackedObjects[stackedObjects.Count-1].transform.localPosition = desiredPos;
+            stackedObjects[0].transform.localPosition = desiredPos;
 
-            refStair.transform.position = stackedObjects[stackedObjects.Count-1].transform.position;
-            stackedObjects.Remove(stackedObjects[stackedObjects.Count-1]);
+            refStair.transform.position = stackedObjects[0].transform.position;
+            stackedObjects.Remove(stackedObjects[0]);
         //}
     }
 }

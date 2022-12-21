@@ -1,10 +1,9 @@
 fileFormatVersion: 2
-guid: 4270870a938cf0343b8cf4472671f710
+guid: 8c55a9864a4b4c94b9582e161b1e08fb
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences:
-  - joystick: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

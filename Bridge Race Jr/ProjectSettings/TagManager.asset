@@ -6,6 +6,9 @@ TagManager:
   tags:
   - StackObj
   - Stair
+  - blue
+  - green
+  - red
   layers:
   - Default
   - TransparentFX
