@@ -1453,7 +1453,7 @@ MonoBehaviour:
   - {fileID: 8488007663264630637, guid: ed87d3447067bbf40bc97f1c83d89207, type: 3}
   - {fileID: 6877811973677518190, guid: 1589bbcbc210669489906ee2644d6361, type: 3}
   - {fileID: 1709198610999748864, guid: a0e43afdb64ed3a4bada35e60baf6658, type: 3}
-  amountToPool: 100
+  amountToPool: 30
 --- !u!1 &1951132904
 GameObject:
   m_ObjectHideFlags: 0
