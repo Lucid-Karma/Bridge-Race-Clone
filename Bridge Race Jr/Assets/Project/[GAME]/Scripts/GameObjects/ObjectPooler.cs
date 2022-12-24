@@ -11,14 +11,12 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
     private Vector3 offset;
     //private bool doesPlayerExist;
-    private int targetObjCount;
 
     //private int[] possiblePos;
     //int head = 14;
-
-    List<Vector3> possiblePos = new();
-    int maxX = 14;
-    int maxZ = 14;
+    private List<Vector3> possiblePos = new List<Vector3>();
+    int xPos = 14;
+    int zPos = 14;
 
 
     void Awake() 
@@ -40,11 +38,23 @@ public class ObjectPooler : Singleton<ObjectPooler>
         //     possiblePos[i] = head;
         //     head -= 3;
         // }
+
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 10; j++)
+            {
+                Vector3 newPos = new Vector3(xPos,1f,zPos);
+                possiblePos.Add(newPos);
+
+                zPos -= 3;
+            }
+            xPos -= 3;
+            zPos = 14;
+        }
     }
 
     void Start()
     {
-        PossiblePos();
         GetObject();
     }
 
@@ -58,15 +68,18 @@ public class ObjectPooler : Singleton<ObjectPooler>
     private int randomObj;
     public GameObject GetPooledObject() 
     {
-        for (int i = 0; i < pooledObjects.Count; i++) 
+        //for (int i = 0; i < pooledObjects.Count; i++) 
+        foreach(GameObject brickObject in pooledObjects)
         {
             randomObj = Random.Range(0, pooledObjects.Count);
-            if (!pooledObjects[i].activeInHierarchy) 
+            //if (!pooledObjects[i].activeInHierarchy) 
+            if(!brickObject.activeInHierarchy)
             {
                 try
                 {
                     count++;
-                    return pooledObjects[randomObj];
+                    //return pooledObjects[randomObj];
+                    return brickObject;
                 }
                 catch (System.Exception ex)
                 {
@@ -105,25 +118,25 @@ public class ObjectPooler : Singleton<ObjectPooler>
     //     Debug.Log(count);
     // }
 
-    List<Vector3> PossiblePos()
-    {
+    // List<Vector3> PossiblePos()
+    // {
 
-        for (int i = 0; i < 10; i++)
-        {
-            for (int j = 0; j < 10; j++)
-            {
-                Vector3 newPos = new Vector3(maxX,1f,maxZ);
-                possiblePos.Add(newPos);
-                maxX -= 3;
-                //counter++;
-            }
-            maxZ -= 3;
-            maxX = 14;
-        }
-        Debug.Log("Possible positions count " + possiblePos.Count);
-        //Debug.Log("counter " + counter);
-        return possiblePos;
-    }
+    //     for (int i = 0; i < 9; i++)
+    //     {
+    //         for (int j = 0; j < 10; j++)
+    //         {
+    //             Vector3 newPos = new Vector3(maxX,1f,maxZ);
+    //             possiblePos.Add(newPos);
+    //             maxX -= 3;
+    //             //counter++;
+    //         }
+    //         maxZ -= 3;
+    //         maxX = 14;
+    //     }
+    //     Debug.Log("Possible positions count " + possiblePos.Count);
+    //     //Debug.Log("counter " + counter);
+    //     return possiblePos;
+    // }
 
     Vector3 GetRandomPosition()
     {
@@ -135,11 +148,9 @@ public class ObjectPooler : Singleton<ObjectPooler>
 
     private void GetObject()
     {
-        targetObjCount = 10;
-
-        for (int j = 0; j < targetObjCount; j++)
+        for (int j = 0; j < 9; j++)
         {
-            for (int i = 0; i < targetObjCount; i++)
+            for (int i = 0; i < 10; i++)
             {
                 GameObject obj = GetPooledObject();
 

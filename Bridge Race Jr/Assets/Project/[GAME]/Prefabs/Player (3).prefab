@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2708147087626628170}
   - component: {fileID: 2708147087626628169}
   - component: {fileID: 2708147087626628168}
+  - component: {fileID: -4824165329541441229}
   m_Layer: 0
   m_Name: Player (3)
   m_TagString: red
@@ -116,6 +117,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &-4824165329541441229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2708147087626628175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4270870a938cf0343b8cf4472671f710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 500
+  joystick: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
 --- !u!1 &2708147088536937003
 GameObject:
   m_ObjectHideFlags: 0

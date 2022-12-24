@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class CharactersArbiter : MonoBehaviour
 {
-    //[SerializeField] Player playerSC;
-    //[SerializeField] CharacterBase _NPC;
 
+    private List<GameObject> characterList = new List<GameObject>();
     public GameObject[] character;
-    private int cIndex;
+    private int cIndex = 0;
     private Vector3 playerPos, firstNPC, secondNPC;
 
     void Awake()
@@ -17,6 +16,7 @@ public class CharactersArbiter : MonoBehaviour
         {
             GameObject obj = (GameObject)Instantiate(character[i]);
             obj.SetActive(false);
+            characterList.Add(obj);
         }
         playerPos = new Vector3(0f, 1.5f, 17f);
         firstNPC = new Vector3(3f, 1.5f, 17f);
@@ -30,18 +30,23 @@ public class CharactersArbiter : MonoBehaviour
 
     public GameObject GetPlayer()
     {
-        cIndex = Random.Range(0, character.Length);
-        return character[cIndex];
+        cIndex = Random.Range(0, characterList.Count);
+        Debug.Log("character " + cIndex);
+        return characterList[cIndex];
     }
 
     public void CreatePlayer()
     {
         GameObject player = GetPlayer();
-        //player.AddComponent<Player>();
+        Debug.Log("caharacter color is " + player.tag);
+        //player.GetComponent<Player>().enabled = true;
+
         if(player != null)
         {
+            player.GetComponent<Player>().enabled = true;
             player.transform.position = playerPos;
             player.SetActive(true);
+            Debug.Log("character created");
         }
         else
         {

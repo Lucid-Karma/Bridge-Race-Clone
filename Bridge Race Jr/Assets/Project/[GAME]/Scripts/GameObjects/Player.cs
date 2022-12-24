@@ -6,12 +6,15 @@ public class Player : CharacterBase
 {
     public float moveSpeed;
     public FixedJoystick joystick;
+
     private Rigidbody rb;
 
     void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody>();
     }
+
+    private float activePitch, activeYaw;
     public void FixedUpdate()
     {
         /*Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
