@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Player : CharacterBase
 {
+    public static Player Instance;
+
+    public GameObject stackParent;
+    public GameObject refObject;
+
     public float moveSpeed;
     public FixedJoystick joystick;
 
@@ -11,6 +16,11 @@ public class Player : CharacterBase
 
     void Awake()
     {
+        Instance = this;
+
+        // stackParent = gameObject.transform.GetChild(0);
+        // refObject = stackParent.GetChild(0);
+
         rb = gameObject.GetComponent<Rigidbody>();
     }
 
