@@ -6,7 +6,6 @@ public class CharacterBase : MonoBehaviour
 {
     void Awake()
     {
-        //this.gameObject.SetActive(false);
         this.enabled = false;
     }
 

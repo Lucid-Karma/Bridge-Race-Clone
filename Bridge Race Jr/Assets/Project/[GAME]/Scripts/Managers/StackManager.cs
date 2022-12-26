@@ -7,8 +7,8 @@ public class StackManager : Singleton<StackManager>
     public List<GameObject> stackedObjects = new List<GameObject>();
 
     #region CollectVariables
-    [SerializeField] private GameObject stackParent;
-    [SerializeField] private GameObject refObject;
+    /*[SerializeField]*/ private GameObject stackParent;
+    /*[SerializeField]*/ private GameObject refObject;
     private float distanceBetweenObjects;
     #endregion
 
@@ -20,6 +20,10 @@ public class StackManager : Singleton<StackManager>
 
     void Start()
     {
+        stackParent = Player.Instance.stackParent;
+        refObject = stackParent.transform.GetChild(0).gameObject;
+        //refObject = Player.Instance.refObject;
+
         distanceBetweenObjects = refObject.transform.localScale.y;
 
         distanceBetweenStairsY = refStair.transform.localScale.y;
