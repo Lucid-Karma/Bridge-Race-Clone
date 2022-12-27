@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CharacterBase : MonoBehaviour
 {
+
     void Awake()
     {
         this.enabled = false;
