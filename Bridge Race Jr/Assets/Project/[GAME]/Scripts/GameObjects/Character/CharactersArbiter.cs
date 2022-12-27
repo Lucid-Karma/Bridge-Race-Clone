@@ -63,6 +63,7 @@ public class CharactersArbiter : MonoBehaviour
         {
             if (!characterList[i].activeInHierarchy)
             {
+                characterList[i].GetComponent<NPC>().enabled = true;
                 characterList[i].transform.position = npcPosition[i];
                 characterList[i].SetActive(true);
             }
