@@ -34,7 +34,6 @@ public class CharactersArbiter : MonoBehaviour
     public GameObject GetPlayer()
     {
         cIndex = Random.Range(0, characterList.Count);
-        Debug.Log("character " + cIndex);
         return characterList[cIndex];
     }
 
@@ -42,18 +41,12 @@ public class CharactersArbiter : MonoBehaviour
     {
         GameObject player = GetPlayer();
         characterList.Remove(player);
-        Debug.Log("caharacter color is " + player.tag);
 
         if(player != null)
         {
             player.GetComponent<Player>().enabled = true;
             player.transform.position = playerPos;
             player.SetActive(true);
-            Debug.Log("character created");
-        }
-        else
-        {
-            Debug.Log("player null");
         }
     }
 
@@ -67,9 +60,6 @@ public class CharactersArbiter : MonoBehaviour
                 characterList[i].transform.position = npcPosition[i];
                 characterList[i].SetActive(true);
             }
-
-            Debug.Log("npc " + i);
         }
-        Debug.Log("npc done");
     }
 }
