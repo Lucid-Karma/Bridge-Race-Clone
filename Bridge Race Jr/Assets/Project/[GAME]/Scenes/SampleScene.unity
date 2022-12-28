@@ -2151,7 +2151,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a021bb9504f1a4d99ea31bf592d866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 50
+  stackParent: {fileID: 2708147089271246643}
+  refObject: {fileID: 2708147088274995212}
+  turnSpeed: 10
   moveSpeed: 10
   targetPos: {fileID: 928370453}
 --- !u!1 &2708147088274995212 stripped
@@ -2202,7 +2204,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a021bb9504f1a4d99ea31bf592d866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 50
+  stackParent: {fileID: 3767976328298398134}
+  refObject: {fileID: 3767976328873361187}
+  turnSpeed: 10
   moveSpeed: 10
   targetPos: {fileID: 295461882}
 --- !u!1 &3767976328298398134 stripped
@@ -2247,6 +2251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09a021bb9504f1a4d99ea31bf592d866, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnSpeed: 50
+  stackParent: {fileID: 5509414780721555937}
+  refObject: {fileID: 5509414781003853647}
+  turnSpeed: 10
   moveSpeed: 10
   targetPos: {fileID: 616217198}

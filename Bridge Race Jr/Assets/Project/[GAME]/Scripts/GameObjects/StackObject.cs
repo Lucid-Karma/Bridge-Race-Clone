@@ -10,4 +10,14 @@ public class StackObject : MonoBehaviour, IInteractable
     {
         StackManager.Instance.CollectStackObject(gameObject);
     }
+    
+    // void OnTriggerEnter(Collider other)
+    // {
+    //     IInteractable interactable = other.GetComponent<IInteractable>();
+
+    //     if (interactable != null && other.gameObject.CompareTag(gameObject.tag))
+    //     {
+    //         interactable.Interact();
+    //     }
+    // }
 }

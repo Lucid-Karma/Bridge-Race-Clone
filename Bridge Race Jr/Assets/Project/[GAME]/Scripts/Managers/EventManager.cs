@@ -22,6 +22,8 @@ public static class EventManager
     public static UnityEvent OnPlayerStartedRunning = new UnityEvent();
 
     public static UnityEvent OnTargetPositionReach = new UnityEvent();
+    public static UnityEvent OnFirstNPCCollect = new UnityEvent();
+    public static UnityEvent OnSecondNPCCollect = new UnityEvent();
 
     public static UnityEvent OnMusicOn = new UnityEvent();
     public static UnityEvent OnMusicOff = new UnityEvent();

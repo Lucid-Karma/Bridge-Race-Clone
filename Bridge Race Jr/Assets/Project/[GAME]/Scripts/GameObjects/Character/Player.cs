@@ -38,10 +38,6 @@ public class Player : CharacterBase
    public override void OnTriggerEnter(Collider other)
    {
         base.OnTriggerEnter(other);
-        if (other.gameObject.CompareTag("Target"))
-        {
-            EventManager.OnTargetPositionReach.Invoke();
-        }
    }
 
    public override void Move()

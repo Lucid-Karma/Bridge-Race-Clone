@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StackManager : Singleton<StackManager>
 {
+    CharacterBase active;
+
     public List<GameObject> stackedObjects = new List<GameObject>();
 
     #region CollectVariables
@@ -20,26 +22,29 @@ public class StackManager : Singleton<StackManager>
 
     void Start()
     {
-        stackParent = Player.Instance.stackParent;
-        refObject = stackParent.transform.GetChild(0).gameObject;
-        //refObject = Player.Instance.refObject;
+        // stackParent = Player.Instance.stackParent;
+        // refObject = stackParent.transform.GetChild(0).gameObject;
 
-        distanceBetweenObjects = refObject.transform.localScale.y;
+        // distanceBetweenObjects = refObject.transform.localScale.y;
 
         distanceBetweenStairsY = refStair.transform.localScale.y;
         distanceBetweenStairsZ = refStair.transform.localScale.z;
     }
 
-    public void CollectStackObject(GameObject stack)
+    public void CollectStackObject(GameObject brick)
     {
-        stack.transform.parent = stackParent.transform;
+        stackParent = active.StackParent;
+        refObject = stackParent.transform.GetChild(0).gameObject;
+        distanceBetweenObjects = refObject.transform.localScale.y;
+
+        brick.transform.parent = stackParent.transform;
         Vector3 desiredPos = refObject.transform.localPosition;
         desiredPos.y += distanceBetweenObjects;
         
-        stack.transform.localPosition = desiredPos; 
+        brick.transform.localPosition = desiredPos; 
         
-        refObject.transform.position = stack.transform.position;
-        stackedObjects.Add(stack);
+        refObject.transform.position = brick.transform.position;
+        stackedObjects.Add(brick);
     }
 
     public void UseStackObject()

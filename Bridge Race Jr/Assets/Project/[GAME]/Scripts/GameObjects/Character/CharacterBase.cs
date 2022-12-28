@@ -2,8 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterBase : MonoBehaviour
+public abstract class CharacterBase : MonoBehaviour
 {
+    private GameObject stackParent;
+    public GameObject StackParent
+    {
+        get
+        {
+            if(stackParent != null)
+            {
+                return stackParent;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        set
+        {
+            stackParent = value;
+        }
+    }
 
     void Awake()
     {

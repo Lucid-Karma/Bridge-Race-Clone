@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class NPC : CharacterBase
 {
+    public static NPC Instance;
+    public GameObject stackParent;
+    public GameObject refObject;
+    
     Vector3 direction;
     Quaternion rotation;
     [SerializeField] private float turnSpeed, moveSpeed;
@@ -13,20 +17,19 @@ public class NPC : CharacterBase
     private Rigidbody rb;
 
     NPC_PositionCreater positionCreate = new NPC_PositionCreater();
+    
     NPC_States currentState;
 
     void Awake()
     {
+        Instance = this;
         rb = gameObject.GetComponent<Rigidbody>();
+        targetPos.SetActive(false);
     }
 
     void OnEnable()
     {
-        EventManager.OnTargetPositionReach.AddListener(UpdateTargetPosition);
-    }
-    void OnDisable()
-    {
-        EventManager.OnTargetPositionReach.RemoveListener(UpdateTargetPosition);
+        targetPos.SetActive(true);
     }
 
     void Start()
@@ -51,12 +54,11 @@ public class NPC : CharacterBase
     public override void OnTriggerEnter(Collider other)
     {
         base.OnTriggerEnter(other);
-    }
 
-    private void UpdateTargetPosition()
-    {
-        newPos = positionCreate.SetNPCPosition(targetPos).transform.position;
-        Debug.Log("target position: " + targetPos.transform.position);
+        if (other.gameObject == targetPos)
+        {
+            newPos = positionCreate.SetNPCPosition(targetPos).transform.position;
+        }
     }
 
     public void SwitchState(NPC_States nextState)
