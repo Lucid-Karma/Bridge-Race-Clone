@@ -6,8 +6,8 @@ public class Player : CharacterBase
 {
     public static Player Instance;
 
-    public GameObject stackParent;
-    public GameObject refObject;
+    //public GameObject stackParent;
+    //public GameObject refObject;
 
     public float moveSpeed;
     public FixedJoystick joystick;
@@ -22,6 +22,8 @@ public class Player : CharacterBase
         // refObject = stackParent.GetChild(0);
 
         rb = gameObject.GetComponent<Rigidbody>();
+
+        //StackParent = stackParent;
     }
 
     private float activePitch, activeYaw;

@@ -4,29 +4,33 @@ using UnityEngine;
 
 public abstract class CharacterBase : MonoBehaviour
 {
-    private GameObject stackParent;
-    public GameObject StackParent
-    {
-        get
-        {
-            if(stackParent != null)
-            {
-                return stackParent;
-            }
-            else
-            {
-                return null;
-            }
-        }
+    public static GameObject StackParent;
+    public static GameObject RefObject;
+    //public static CharacterBase Instance;
+    // private GameObject stackParent;
+    // public GameObject StackParent
+    // {
+    //     get
+    //     {
+    //         // if(stackParent != null)
+    //         // {
+    //              return stackParent;
+    //         // }
+    //         // else
+    //         // {
+    //         //     return null;
+    //         // }
+    //     }
 
-        set
-        {
-            stackParent = value;
-        }
-    }
+    //     set
+    //     {
+    //         stackParent = value;
+    //     }
+    // }
 
     void Awake()
     {
+        //Instance = this;
         this.enabled = false;
     }
 

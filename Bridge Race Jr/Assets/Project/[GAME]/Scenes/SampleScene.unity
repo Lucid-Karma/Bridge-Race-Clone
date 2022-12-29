@@ -633,6 +633,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2929252283543865622}
     - target: {fileID: -4824165329541441229, guid: bed811ffba1a34b4ca4eb2b4857fbdda, type: 3}
+      propertyPath: RefObject
+      value: 
+      objectReference: {fileID: 2708147088274995212}
+    - target: {fileID: -4824165329541441229, guid: bed811ffba1a34b4ca4eb2b4857fbdda, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -640,6 +644,10 @@ PrefabInstance:
       propertyPath: refObject
       value: 
       objectReference: {fileID: 2708147088274995212}
+    - target: {fileID: -4824165329541441229, guid: bed811ffba1a34b4ca4eb2b4857fbdda, type: 3}
+      propertyPath: StackParent
+      value: 
+      objectReference: {fileID: 2708147089271246643}
     - target: {fileID: -4824165329541441229, guid: bed811ffba1a34b4ca4eb2b4857fbdda, type: 3}
       propertyPath: stackParent
       value: 
@@ -952,8 +960,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4270870a938cf0343b8cf4472671f710, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stackParent: {fileID: 0}
-  refObject: {fileID: 0}
   moveSpeed: 500
   joystick: {fileID: 2929252283543865622}
 --- !u!1 &616217198
@@ -1191,6 +1197,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2929252283543865622}
     - target: {fileID: -1275245225964103532, guid: 6905eb6f6304d3040ae8cc557941f40d, type: 3}
+      propertyPath: RefObject
+      value: 
+      objectReference: {fileID: 3767976328873361187}
+    - target: {fileID: -1275245225964103532, guid: 6905eb6f6304d3040ae8cc557941f40d, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -1198,6 +1208,10 @@ PrefabInstance:
       propertyPath: refObject
       value: 
       objectReference: {fileID: 3767976328873361187}
+    - target: {fileID: -1275245225964103532, guid: 6905eb6f6304d3040ae8cc557941f40d, type: 3}
+      propertyPath: StackParent
+      value: 
+      objectReference: {fileID: 3767976328298398134}
     - target: {fileID: -1275245225964103532, guid: 6905eb6f6304d3040ae8cc557941f40d, type: 3}
       propertyPath: stackParent
       value: 
@@ -1264,6 +1278,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2929252283543865622}
     - target: {fileID: 196761010604500842, guid: 344171848aba4044db4099783122998f, type: 3}
+      propertyPath: RefObject
+      value: 
+      objectReference: {fileID: 5509414781003853647}
+    - target: {fileID: 196761010604500842, guid: 344171848aba4044db4099783122998f, type: 3}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -1271,6 +1289,10 @@ PrefabInstance:
       propertyPath: refObject
       value: 
       objectReference: {fileID: 5509414781003853647}
+    - target: {fileID: 196761010604500842, guid: 344171848aba4044db4099783122998f, type: 3}
+      propertyPath: StackParent
+      value: 
+      objectReference: {fileID: 5509414780721555937}
     - target: {fileID: 196761010604500842, guid: 344171848aba4044db4099783122998f, type: 3}
       propertyPath: stackParent
       value: 
