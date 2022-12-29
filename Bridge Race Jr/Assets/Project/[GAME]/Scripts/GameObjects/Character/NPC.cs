@@ -20,11 +20,17 @@ public class NPC : CharacterBase
     
     NPC_States currentState;
 
+    //public GameObject StackParent{ set{ StackParent = stackParent;}}
+
     void Awake()
     {
         Instance = this;
         rb = gameObject.GetComponent<Rigidbody>();
         targetPos.SetActive(false);
+
+        //StackParent = stackParent;
+        StackParent = stackParent;
+        RefObject = refObject;
     }
 
     void OnEnable()

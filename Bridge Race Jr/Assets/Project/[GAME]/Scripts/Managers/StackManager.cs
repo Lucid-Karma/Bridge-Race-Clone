@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class StackManager : Singleton<StackManager>
 {
-    CharacterBase active;
+    //CharacterBase active;
 
     public List<GameObject> stackedObjects = new List<GameObject>();
 
@@ -33,8 +33,9 @@ public class StackManager : Singleton<StackManager>
 
     public void CollectStackObject(GameObject brick)
     {
-        stackParent = active.StackParent;
-        refObject = stackParent.transform.GetChild(0).gameObject;
+        stackParent = CharacterBase.StackParent;
+        //refObject = stackParent.transform.GetChild(0).gameObject;
+        refObject = CharacterBase.RefObject;
         distanceBetweenObjects = refObject.transform.localScale.y;
 
         brick.transform.parent = stackParent.transform;
