@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class NPC : CharacterBase
 {
-    public static NPC Instance;
     public GameObject stackParent;
     public GameObject refObject;
     
@@ -18,19 +17,13 @@ public class NPC : CharacterBase
 
     NPC_PositionCreater positionCreate = new NPC_PositionCreater();
     
-    NPC_States currentState;
+    //NPC_States currentState;
 
-    //public GameObject StackParent{ set{ StackParent = stackParent;}}
 
     void Awake()
     {
-        Instance = this;
         rb = gameObject.GetComponent<Rigidbody>();
         targetPos.SetActive(false);
-
-        //StackParent = stackParent;
-        StackParent = stackParent;
-        RefObject = refObject;
     }
 
     void OnEnable()
@@ -47,7 +40,6 @@ public class NPC : CharacterBase
     {
         Move();
         rb.MovePosition(transform.position + (transform.forward * moveSpeed * Time.fixedDeltaTime));
-        //Move();
     }
 
     public override void Move()
@@ -59,6 +51,9 @@ public class NPC : CharacterBase
 
     public override void OnTriggerEnter(Collider other)
     {
+        StackParent = stackParent;
+        RefObject = refObject;
+        
         base.OnTriggerEnter(other);
 
         if (other.gameObject == targetPos)
@@ -67,9 +62,9 @@ public class NPC : CharacterBase
         }
     }
 
-    public void SwitchState(NPC_States nextState)
-    {
-        currentState = nextState;
-        currentState.EnterState(this);
-    }
+    // public void SwitchState(NPC_States nextState)
+    // {
+    //     currentState = nextState;
+    //     currentState.EnterState(this);
+    // }
 }
