@@ -8,6 +8,8 @@ public class Stair : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        Debug.Log("staired");
         StackManager.Instance.UseStackObject();
+        
     }
 }

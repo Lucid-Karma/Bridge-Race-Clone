@@ -6,7 +6,8 @@ public abstract class CharacterBase : MonoBehaviour
 {
     public static GameObject StackParent;
     public static GameObject RefObject;
-    //public static CharacterBase Instance;
+
+
     // private GameObject stackParent;
     // public GameObject StackParent
     // {
@@ -30,20 +31,16 @@ public abstract class CharacterBase : MonoBehaviour
 
     void Awake()
     {
-        //Instance = this;
         this.enabled = false;
     }
 
-    public virtual void Move()
-    {
-        
-    }
+    public abstract void Move();
 
     public virtual void OnTriggerEnter(Collider other)
     {
         IInteractable interactable = other.GetComponent<IInteractable>();
 
-        if (interactable != null && other.gameObject.CompareTag(gameObject.tag))
+        if (interactable != null && other.gameObject.CompareTag(gameObject.tag) || other.gameObject.CompareTag("Stair"))
         {
             interactable.Interact();
         }

@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class Player : CharacterBase
 {
-    public static Player Instance;
-
-    //public GameObject stackParent;
-    //public GameObject refObject;
+    public GameObject stackParent;
+    public GameObject refObject;
 
     public float moveSpeed;
     public FixedJoystick joystick;
@@ -16,14 +14,7 @@ public class Player : CharacterBase
 
     void Awake()
     {
-        Instance = this;
-
-        // stackParent = gameObject.transform.GetChild(0);
-        // refObject = stackParent.GetChild(0);
-
         rb = gameObject.GetComponent<Rigidbody>();
-
-        //StackParent = stackParent;
     }
 
     private float activePitch, activeYaw;
@@ -35,10 +26,18 @@ public class Player : CharacterBase
         //Vector3 direction = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
         //rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, joystick.Vertical * moveSpeed * Time.fixedDeltaTime);
         Move();
+
+        if (joystick.Horizontal != 0 || joystick.Vertical != 0)
+        {
+            transform.rotation = Quaternion.LookRotation(rb.velocity);
+        }
     }
 
    public override void OnTriggerEnter(Collider other)
    {
+        StackParent = stackParent;
+        RefObject = refObject;
+
         base.OnTriggerEnter(other);
    }
 

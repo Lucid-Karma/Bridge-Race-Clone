@@ -20,28 +20,24 @@ public class StackManager : Singleton<StackManager>
     private float distanceBetweenStairsY, distanceBetweenStairsZ;
     #endregion
 
-    void Start()
-    {
-        // stackParent = Player.Instance.stackParent;
-        // refObject = stackParent.transform.GetChild(0).gameObject;
-
-        // distanceBetweenObjects = refObject.transform.localScale.y;
-
-        distanceBetweenStairsY = refStair.transform.localScale.y;
-        distanceBetweenStairsZ = refStair.transform.localScale.z;
-    }
+    // void Start()
+    // {
+    //     distanceBetweenStairsY = refStair.transform.localScale.y;
+    //     distanceBetweenStairsZ = refStair.transform.localScale.z;
+    // }
 
     public void CollectStackObject(GameObject brick)
     {
         stackParent = CharacterBase.StackParent;
-        //refObject = stackParent.transform.GetChild(0).gameObject;
         refObject = CharacterBase.RefObject;
+
         distanceBetweenObjects = refObject.transform.localScale.y;
 
         brick.transform.parent = stackParent.transform;
         Vector3 desiredPos = refObject.transform.localPosition;
-        desiredPos.y += distanceBetweenObjects;
+        desiredPos.y += distanceBetweenObjects / 2;     //problematic.
         
+        brick.transform.localRotation = Quaternion.identity;
         brick.transform.localPosition = desiredPos; 
         
         refObject.transform.position = brick.transform.position;
@@ -52,11 +48,15 @@ public class StackManager : Singleton<StackManager>
     {
         //for (int i = 0; i < stackedObjects.Count; i++) 
         //{
+            distanceBetweenStairsY = refStair.transform.localScale.y / 2;
+            distanceBetweenStairsZ = refStair.transform.localScale.z / 2;
+
             stackedObjects[0].transform.parent = stairParent.transform;
             Vector3 desiredPos = refStair.transform.localPosition;
             desiredPos.y += distanceBetweenStairsY;
             desiredPos.z += distanceBetweenStairsZ;
 
+            stackedObjects[0].transform.rotation = new Quaternion(0, 0, 0, 1);
             stackedObjects[0].transform.localPosition = desiredPos;
 
             refStair.transform.position = stackedObjects[0].transform.position;
