@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class Player : CharacterBase
 {
+    // CharacterStates currentState;
+
+    // public CollectState collectState = new CollectState();
+    // public CollideState collideState = new CollideState();
+    // public BuildState buildState = new BuildState(); 
+
     public GameObject stackParent;
     public GameObject refObject;
     private List<GameObject> brickList = new List<GameObject>();
@@ -17,6 +23,11 @@ public class Player : CharacterBase
     {
         rb = gameObject.GetComponent<Rigidbody>();
     }
+    // public void Start()
+    // {
+    //     currentState = collectState;
+    //     currentState.EnterState(this);
+    // }
 
     private float activePitch, activeYaw;
     public void FixedUpdate()
@@ -54,4 +65,10 @@ public class Player : CharacterBase
    {
        rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, joystick.Vertical * moveSpeed * Time.fixedDeltaTime); 
    }
+
+//    public void SwitchState(CharacterStates nextState)
+//     {
+//         currentState = nextState;
+//         currentState.EnterState(this);
+//     }
 }

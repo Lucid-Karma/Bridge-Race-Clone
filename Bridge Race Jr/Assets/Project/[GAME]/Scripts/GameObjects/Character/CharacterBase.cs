@@ -2,19 +2,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// public enum BrickType
-// {
-//     BLUE,
-//     GREEN,
-//     RED
-// }
+public enum StateType
+{
+    COLLECT,
+    COLLIDE,
+    BUILD
+}
 public abstract class CharacterBase : MonoBehaviour
 {
+    CharacterStates currentState;
+
+    public CollectState collectState = new CollectState();
+    public CollideState collideState = new CollideState();
+    public BuildState buildState = new BuildState(); 
+
+    public StateType stateType;
 
     public static GameObject StackParent;
     public static GameObject RefObject;
-
-    //public BrickType brickType;
 
     public static List<GameObject> blueBrickList = new List<GameObject>();
     public static List<GameObject> greenBrickList = new List<GameObject>();
@@ -47,6 +52,17 @@ public abstract class CharacterBase : MonoBehaviour
         this.enabled = false;
     }
 
+    public void Start()
+    {
+        currentState = collectState;
+        currentState.EnterState(this);
+    }
+
+    void Update()
+    {
+        currentState.UpdateState(this);
+    }
+
     public abstract void Move();
 
     public virtual void OnTriggerEnter(Collider other)
@@ -69,8 +85,19 @@ public abstract class CharacterBase : MonoBehaviour
             {
                 redBrickList.Add(other.gameObject);
             }
-            
+
             interactable.Interact();
         }
+        else if(other.gameObject.CompareTag("Stair"))
+        {
+            stateType = StateType.BUILD;
+            Debug.Log("build");
+        }
+    }
+
+    public void SwitchState(CharacterStates nextState)
+    {
+        currentState = nextState;
+        currentState.EnterState(this);
     }
 }

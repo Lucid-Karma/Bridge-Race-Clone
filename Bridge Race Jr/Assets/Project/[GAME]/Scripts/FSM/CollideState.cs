@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Patrol : NPC_States
+public class CollideState : CharacterStates
 {
-    public override void EnterState(NPC fsm)
+    public override void EnterState(CharacterBase fsm)
     {
-        Debug.Log("Patroling");
+        Debug.Log("Collecting");
     }
 
-    public override void UpdateState(NPC fsm)
+    public override void UpdateState(CharacterBase fsm)
     {
         // if (fsm.executingState == ExecutingState.OUTIDLE)
         // {
@@ -23,7 +23,7 @@ public class Patrol : NPC_States
         
     }
 
-    public override void ExitState(NPC fsm)
+    public override void ExitState(CharacterBase fsm)
     {
         // if(fsm.executingState == ExecutingState.INRUN)
         // {

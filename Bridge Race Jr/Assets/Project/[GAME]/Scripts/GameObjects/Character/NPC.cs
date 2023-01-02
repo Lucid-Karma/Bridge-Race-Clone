@@ -33,6 +33,7 @@ public class NPC : CharacterBase
 
     void Start()
     {
+        base.Start();
         newPos = positionCreate.SetNPCPosition(targetPos).transform.position;
     }
 
@@ -61,10 +62,4 @@ public class NPC : CharacterBase
             newPos = positionCreate.SetNPCPosition(targetPos).transform.position;
         }
     }
-
-    // public void SwitchState(NPC_States nextState)
-    // {
-    //     currentState = nextState;
-    //     currentState.EnterState(this);
-    // }
 }
