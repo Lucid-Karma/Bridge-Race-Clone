@@ -2,8 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum BrickType
+{
+    BLUE,
+    GREEN,
+    RED
+}
 public class CharactersArbiter : MonoBehaviour
 {
+    public BrickType brickType;
 
     public List<GameObject> characterList = new List<GameObject>();
     private int cIndex = 0;
@@ -29,6 +36,7 @@ public class CharactersArbiter : MonoBehaviour
     {
         CreatePlayer();
         CreateNPC();
+        //GetCharacterType();
     }
 
     public GameObject GetPlayer()
@@ -62,4 +70,28 @@ public class CharactersArbiter : MonoBehaviour
             }
         }
     }
+
+    // public void GetCharacterType()
+    // {
+    //     // foreach (GameObject item in characterList)
+    //     // {
+    //     //     if (item.CompareTag("blue"))
+    //     //     {
+    //     //         brickType = BrickType.BLUE;
+    //     //     }
+    //     //     else if (item.CompareTag("green"))
+    //     //     {
+    //     //         brickType = BrickType.GREEN;
+    //     //     }
+    //     //     else if (item.CompareTag("red"))
+    //     //     {
+    //     //         brickType = BrickType.RED;
+    //     //     }
+    //     // }
+
+    //     for (int i = 0; i < characterList.Count; i++)
+    //     {
+            
+    //     }
+    // }
 }

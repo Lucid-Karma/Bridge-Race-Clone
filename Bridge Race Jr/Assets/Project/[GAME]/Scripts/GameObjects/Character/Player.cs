@@ -6,6 +6,7 @@ public class Player : CharacterBase
 {
     public GameObject stackParent;
     public GameObject refObject;
+    private List<GameObject> brickList = new List<GameObject>();
 
     public float moveSpeed;
     public FixedJoystick joystick;
@@ -39,6 +40,8 @@ public class Player : CharacterBase
         RefObject = refObject;
 
         base.OnTriggerEnter(other);
+
+        //BrickList.Add(brickList[brickList.Count - 1]) ;
    }
 
    public override void Move()
