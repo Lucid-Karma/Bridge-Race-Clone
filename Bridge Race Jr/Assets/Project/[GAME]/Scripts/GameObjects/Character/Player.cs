@@ -41,7 +41,13 @@ public class Player : CharacterBase
 
         base.OnTriggerEnter(other);
 
-        //BrickList.Add(brickList[brickList.Count - 1]) ;
+        // if(other.gameObject.CompareTag("Stair"))
+        // {
+        //     if (joystick.Vertical != 0)
+        //     {
+        //         rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, joystick.Vertical * moveSpeed * Time.fixedDeltaTime, rb.velocity.z); 
+        //     }
+        // }
    }
 
    public override void Move()
