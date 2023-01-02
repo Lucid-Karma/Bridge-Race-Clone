@@ -6,6 +6,7 @@ public class Player : CharacterBase
 {
     public GameObject stackParent;
     public GameObject refObject;
+    private List<GameObject> brickList = new List<GameObject>();
 
     public float moveSpeed;
     public FixedJoystick joystick;
@@ -39,6 +40,14 @@ public class Player : CharacterBase
         RefObject = refObject;
 
         base.OnTriggerEnter(other);
+
+        // if(other.gameObject.CompareTag("Stair"))
+        // {
+        //     if (joystick.Vertical != 0)
+        //     {
+        //         rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, joystick.Vertical * moveSpeed * Time.fixedDeltaTime, rb.velocity.z); 
+        //     }
+        // }
    }
 
    public override void Move()

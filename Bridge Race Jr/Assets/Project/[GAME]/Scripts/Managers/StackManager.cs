@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class StackManager : Singleton<StackManager>
 {
-    //CharacterBase active;
+    public List<GameObject> currentList = new List<GameObject>();
 
-    public List<GameObject> stackedObjects = new List<GameObject>();
 
     #region CollectVariables
-    /*[SerializeField]*/ private GameObject stackParent;
-    /*[SerializeField]*/ private GameObject refObject;
+    private GameObject stackParent;
+    private GameObject refObject;
     private float distanceBetweenObjects;
     #endregion
 
@@ -20,11 +19,7 @@ public class StackManager : Singleton<StackManager>
     private float distanceBetweenStairsY, distanceBetweenStairsZ;
     #endregion
 
-    // void Start()
-    // {
-    //     distanceBetweenStairsY = refStair.transform.localScale.y;
-    //     distanceBetweenStairsZ = refStair.transform.localScale.z;
-    // }
+
 
     public void CollectStackObject(GameObject brick)
     {
@@ -41,26 +36,32 @@ public class StackManager : Singleton<StackManager>
         brick.transform.localPosition = desiredPos; 
         
         refObject.transform.position = brick.transform.position;
-        stackedObjects.Add(brick);
     }
 
-    public void UseStackObject()
+    public void UseStackObject(List<GameObject> currentList)
     {
-        //for (int i = 0; i < stackedObjects.Count; i++) 
+        //for (int i = 0; i < currentList.Count; i++) 
         //{
+            //currentList[currentList.Count -1] = CharacterBase.CharacterBase.BrickList[CharacterBase.CharacterBase.BrickList.Count -1];
+            //currentList[0] = CharacterBase.CharacterBase.BrickList[0];
+            //ChooseCharacterBase.BrickList();
+            //currentList.Add(CharacterBase.CharacterBase.BrickList[CharacterBase.CharacterBase.BrickList.Count -1]);
+        
+            //Debug.Log(currentList.Count);
+
             distanceBetweenStairsY = refStair.transform.localScale.y / 2;
             distanceBetweenStairsZ = refStair.transform.localScale.z / 2;
 
-            stackedObjects[0].transform.parent = stairParent.transform;
+            currentList[currentList.Count -1].transform.parent = stairParent.transform;
             Vector3 desiredPos = refStair.transform.localPosition;
             desiredPos.y += distanceBetweenStairsY;
             desiredPos.z += distanceBetweenStairsZ;
 
-            stackedObjects[0].transform.rotation = new Quaternion(0, 0, 0, 1);
-            stackedObjects[0].transform.localPosition = desiredPos;
+            currentList[currentList.Count -1].transform.rotation = new Quaternion(0, 0, 0, 1);
+            currentList[currentList.Count -1].transform.localPosition = desiredPos;
 
-            refStair.transform.position = stackedObjects[0].transform.position;
-            stackedObjects.Remove(stackedObjects[0]);
+            refStair.transform.position = currentList[currentList.Count -1].transform.position;
+            currentList.Remove(currentList[currentList.Count -1]);
         //}
     }
 }
