@@ -40,14 +40,11 @@ public class StackManager : Singleton<StackManager>
 
     public void UseStackObject(List<GameObject> currentList)
     {
-        //for (int i = 0; i < currentList.Count; i++) 
-        //{
-            //currentList[currentList.Count -1] = CharacterBase.CharacterBase.BrickList[CharacterBase.CharacterBase.BrickList.Count -1];
-            //currentList[0] = CharacterBase.CharacterBase.BrickList[0];
-            //ChooseCharacterBase.BrickList();
-            //currentList.Add(CharacterBase.CharacterBase.BrickList[CharacterBase.CharacterBase.BrickList.Count -1]);
-        
-            //Debug.Log(currentList.Count);
+            // stackParent = CharacterBase.StackParent;
+            // refObject = CharacterBase.RefObject;
+            // distanceBetweenObjects = refObject.transform.localScale.y;
+            // Vector3 updatedRefObjPos = refObject.transform.localPosition;
+            // updatedRefObjPos.y -= distanceBetweenObjects / 2;
 
             distanceBetweenStairsY = refStair.transform.localScale.y / 2;
             distanceBetweenStairsZ = refStair.transform.localScale.z / 2;
@@ -62,6 +59,8 @@ public class StackManager : Singleton<StackManager>
 
             refStair.transform.position = currentList[currentList.Count -1].transform.position;
             currentList.Remove(currentList[currentList.Count -1]);
-        //}
+
+
+            //refObject.transform.position = updatedRefObjPos;
     }
 }

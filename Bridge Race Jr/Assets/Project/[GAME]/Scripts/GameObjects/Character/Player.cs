@@ -10,28 +10,36 @@ public class Player : CharacterBase
 
     public float moveSpeed;
     public FixedJoystick joystick;
+    private Animator animator;
 
     private Rigidbody rb;
-
+//Vector3 pos;
     void Awake()
     {
+        base.Awake();
         rb = gameObject.GetComponent<Rigidbody>();
+        animator = /*gameObject.*/GetComponent<Animator>();
+        //pos.y = 0.6f;
     }
 
-    private float activePitch, activeYaw;
+    float y = 0;
     public void FixedUpdate()
     {
-        /*Vector3 direction = Vector3.forward * variableJoystick.Vertical + Vector3.right * variableJoystick.Horizontal;
-        rb.AddForce(direction * speed * Time.fixedDeltaTime, ForceMode.VelocityChange);*/
-
-        //Vector3 direction = Vector3.forward * joystick.Vertical + Vector3.right * joystick.Horizontal;
-        //rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, joystick.Vertical * moveSpeed * Time.fixedDeltaTime);
-        Move();
+        if (Stair.isTriggered && joystick.Vertical != 0)
+        {
+            
+            y += 0.1f;
+            transform.position = new Vector3(transform.position.x, y, transform.position.z);
+        }
+        else
+            Move();
 
         if (joystick.Horizontal != 0 || joystick.Vertical != 0)
         {
             transform.rotation = Quaternion.LookRotation(rb.velocity);
+            animator.SetBool("isRunning", true);    //animator.GetBool("isRunning")
         }
+        else    animator.SetBool("isRunning", false);
     }
 
    public override void OnTriggerEnter(Collider other)
@@ -52,6 +60,6 @@ public class Player : CharacterBase
 
    public override void Move()
    {
-       rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, joystick.Vertical * moveSpeed * Time.fixedDeltaTime); 
+       rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, rb.velocity/*pos*/.y, joystick.Vertical * moveSpeed * Time.fixedDeltaTime); 
    }
 }

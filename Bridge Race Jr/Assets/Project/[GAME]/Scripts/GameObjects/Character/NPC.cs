@@ -14,6 +14,7 @@ public class NPC : CharacterBase
     public GameObject targetPos;
 
     private Rigidbody rb;
+    private Animator animator;
 
     NPC_PositionCreater positionCreate = new NPC_PositionCreater();
     
@@ -22,7 +23,10 @@ public class NPC : CharacterBase
 
     void Awake()
     {
+        base.Awake();
         rb = gameObject.GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
+
         targetPos.SetActive(false);
     }
 
@@ -34,6 +38,7 @@ public class NPC : CharacterBase
     void Start()
     {
         newPos = positionCreate.SetNPCPosition(targetPos).transform.position;
+        animator.SetBool("isRunning", true);
     }
 
     void FixedUpdate()
@@ -55,7 +60,10 @@ public class NPC : CharacterBase
         RefObject = refObject;
         
         base.OnTriggerEnter(other);
+    }
 
+    void OnTriggerStay(Collider other)
+    {
         if (other.gameObject == targetPos)
         {
             newPos = positionCreate.SetNPCPosition(targetPos).transform.position;

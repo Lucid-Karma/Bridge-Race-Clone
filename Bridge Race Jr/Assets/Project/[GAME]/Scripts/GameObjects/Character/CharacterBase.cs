@@ -42,7 +42,7 @@ public abstract class CharacterBase : MonoBehaviour
     //     }
     // }
 
-    void Awake()
+    public void Awake()
     {
         this.enabled = false;
     }
