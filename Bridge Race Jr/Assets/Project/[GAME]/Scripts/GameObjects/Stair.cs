@@ -5,10 +5,17 @@ using System.Linq;
 
 public class Stair : MonoBehaviour//, IInteractable
 {
+    public static bool isTriggered = false;
 
     void OnTriggerEnter(Collider other)
     {
+        isTriggered = true;
         StackManager.Instance.UseStackObject(GetCharacterList(other.gameObject));
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        isTriggered = false;
     }
 
     // // public void Interact()
