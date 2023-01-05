@@ -16,7 +16,6 @@ public class Player : CharacterBase
 //Vector3 pos;
     void Awake()
     {
-        base.Awake();
         rb = gameObject.GetComponent<Rigidbody>();
         animator = /*gameObject.*/GetComponent<Animator>();
         //pos.y = 0.6f;
@@ -28,8 +27,8 @@ public class Player : CharacterBase
         if (Stair.isTriggered && joystick.Vertical != 0)
         {
             
-            y += 0.1f;
-            transform.position = new Vector3(transform.position.x, y, transform.position.z);
+            //y += 0.1f;
+            //transform.position = new Vector3(transform.position.x, y, transform.position.z);
         }
         else
             Move();

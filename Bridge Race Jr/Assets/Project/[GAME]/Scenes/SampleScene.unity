@@ -1887,6 +1887,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentList: []
+  executionState: 0
   stairParent: {fileID: 1951132904}
   refStair: {fileID: 1124851454}
 --- !u!4 &1705048574
@@ -2045,6 +2046,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 131042065}
     m_Modifications:
+    - target: {fileID: 193615653217945253, guid: 4dc033dfce6e3d846a25f14490a4707f, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 193615653217945306, guid: 4dc033dfce6e3d846a25f14490a4707f, type: 3}
       propertyPath: targetPos
       value: 
@@ -2053,6 +2058,10 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 2929252283543865622}
+    - target: {fileID: 6036311968799376994, guid: 4dc033dfce6e3d846a25f14490a4707f, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 6075339119779585247, guid: 4dc033dfce6e3d846a25f14490a4707f, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -2063,7 +2072,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075339119779585247, guid: 4dc033dfce6e3d846a25f14490a4707f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6075339119779585247, guid: 4dc033dfce6e3d846a25f14490a4707f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2172,6 +2181,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: GreenCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 3072364484799304882, guid: 416ba9c7db808ea42b52852c1011fe14, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 3254275442260823567, guid: 416ba9c7db808ea42b52852c1011fe14, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -2182,7 +2195,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3254275442260823567, guid: 416ba9c7db808ea42b52852c1011fe14, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3254275442260823567, guid: 416ba9c7db808ea42b52852c1011fe14, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2224,6 +2237,10 @@ PrefabInstance:
       propertyPath: joystick
       value: 
       objectReference: {fileID: 2929252283543865622}
+    - target: {fileID: 8919852476325565557, guid: 416ba9c7db808ea42b52852c1011fe14, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 416ba9c7db808ea42b52852c1011fe14, type: 3}
 --- !u!4 &3767976327812384016 stripped
@@ -2325,6 +2342,14 @@ PrefabInstance:
       propertyPath: targetPos
       value: 
       objectReference: {fileID: 616217198}
+    - target: {fileID: 2559164481085538544, guid: 4da57750c33a3cc489b3488b98726e43, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8280271575481942071, guid: 4da57750c33a3cc489b3488b98726e43, type: 3}
+      propertyPath: m_Constraints
+      value: 112
+      objectReference: {fileID: 0}
     - target: {fileID: 8458840223770172042, guid: 4da57750c33a3cc489b3488b98726e43, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -2335,7 +2360,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8458840223770172042, guid: 4da57750c33a3cc489b3488b98726e43, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.6
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8458840223770172042, guid: 4da57750c33a3cc489b3488b98726e43, type: 3}
       propertyPath: m_LocalPosition.z

@@ -23,7 +23,6 @@ public class NPC : CharacterBase
 
     void Awake()
     {
-        base.Awake();
         rb = gameObject.GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 

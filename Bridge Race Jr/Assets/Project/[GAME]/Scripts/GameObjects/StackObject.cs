@@ -4,20 +4,16 @@ using UnityEngine;
 
 public class StackObject : MonoBehaviour, IInteractable
 {
-    public bool isBuilding { get; set; }
+    //public bool isBuilding { get; set; }
+    public static bool isBuilding;
 
     public void Interact()
     {
+        // if (!Stair.isTriggered)
+        // {
+        //     StackManager.Instance.CollectStackObject(gameObject);
+        // }
+        // else    return;
         StackManager.Instance.CollectStackObject(gameObject);
     }
-    
-    // void OnTriggerEnter(Collider other)
-    // {
-    //     IInteractable interactable = other.GetComponent<IInteractable>();
-
-    //     if (interactable != null && other.gameObject.CompareTag(gameObject.tag))
-    //     {
-    //         interactable.Interact();
-    //     }
-    // }
 }
