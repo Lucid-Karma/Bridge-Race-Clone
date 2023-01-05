@@ -24,9 +24,9 @@ public class CharactersArbiter : MonoBehaviour
             characterList[i].SetActive(false);
         }
 
-        playerPos = new Vector3(0f, 1.5f, 17f);
-        firstNPC = new Vector3(3f, 1.5f, 17f);
-        secondNPC = new Vector3(-3f, 1.5f, 17f);
+        playerPos = new Vector3(0f, 0.5f, 17f);
+        firstNPC = new Vector3(3f, 0.5f, 17f);
+        secondNPC = new Vector3(-3f, 0.5f, 17f);
 
         npcPosition.Add(firstNPC);
         npcPosition.Add(secondNPC);
@@ -36,7 +36,6 @@ public class CharactersArbiter : MonoBehaviour
     {
         CreatePlayer();
         CreateNPC();
-        //GetCharacterType();
     }
 
     public GameObject GetPlayer()
@@ -70,28 +69,4 @@ public class CharactersArbiter : MonoBehaviour
             }
         }
     }
-
-    // public void GetCharacterType()
-    // {
-    //     // foreach (GameObject item in characterList)
-    //     // {
-    //     //     if (item.CompareTag("blue"))
-    //     //     {
-    //     //         brickType = BrickType.BLUE;
-    //     //     }
-    //     //     else if (item.CompareTag("green"))
-    //     //     {
-    //     //         brickType = BrickType.GREEN;
-    //     //     }
-    //     //     else if (item.CompareTag("red"))
-    //     //     {
-    //     //         brickType = BrickType.RED;
-    //     //     }
-    //     // }
-
-    //     for (int i = 0; i < characterList.Count; i++)
-    //     {
-            
-    //     }
-    // }
 }

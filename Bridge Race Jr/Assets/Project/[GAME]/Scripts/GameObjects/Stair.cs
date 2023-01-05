@@ -13,6 +13,11 @@ public class Stair : MonoBehaviour//, IInteractable
         StackManager.Instance.UseStackObject(GetCharacterList(other.gameObject));
     }
 
+    // void OnTriggerStay(Collider other)
+    // {
+    //     isTriggered = true;
+    // }
+
     void OnTriggerExit(Collider other)
     {
         isTriggered = false;
