@@ -21,13 +21,13 @@ public class Player : CharacterBase
         //pos.y = 0.6f;
     }
 
-    float y = 0;
+    //float y = 0;
     public void FixedUpdate()
     {
         if (Stair.isTriggered && joystick.Vertical != 0)
         {
             
-            //y += 0.1f;
+            
             //transform.position = new Vector3(transform.position.x, y, transform.position.z);
         }
         else
@@ -47,6 +47,9 @@ public class Player : CharacterBase
         RefObject = refObject;
 
         base.OnTriggerEnter(other);
+        // Debug.Log(transform.position);
+        // y += 0.5f;
+        // Debug.Log(transform.position);
 
         // if(other.gameObject.CompareTag("Stair"))
         // {

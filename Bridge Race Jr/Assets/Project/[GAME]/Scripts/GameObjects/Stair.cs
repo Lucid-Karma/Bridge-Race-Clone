@@ -13,10 +13,10 @@ public class Stair : MonoBehaviour//, IInteractable
         StackManager.Instance.UseStackObject(GetCharacterList(other.gameObject));
     }
 
-    // void OnTriggerStay(Collider other)
-    // {
-    //     isTriggered = true;
-    // }
+    void OnTriggerStay(Collider other)
+    {
+        isTriggered = true;
+    }
 
     void OnTriggerExit(Collider other)
     {
@@ -34,17 +34,14 @@ public class Stair : MonoBehaviour//, IInteractable
     {
         if (character.CompareTag("blue"))
         {
-            Debug.Log("blue");
             return CharacterBase.blueBrickList;
         }
         else if (character.CompareTag("green"))
         {
-            Debug.Log("green");
             return CharacterBase.greenBrickList;
         }
         else if (character.CompareTag("red"))
         {
-            Debug.Log("red");
             return CharacterBase.redBrickList;
         }
         else    return null;

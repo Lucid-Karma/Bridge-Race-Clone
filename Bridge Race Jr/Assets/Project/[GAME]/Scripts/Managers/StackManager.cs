@@ -25,12 +25,14 @@ public class StackManager : Singleton<StackManager>
     private float distanceBetweenStairsY, distanceBetweenStairsZ;
     #endregion
 
-
+StackObject stackObject = new StackObject(false);
 
     public void CollectStackObject(GameObject brick)
     {
-        // if (!Stair.isTriggered)
-        // {
+        if (!stackObject.isCollected)
+        {
+            // StackObject stackObject = new StackObject(true);
+            //GameObject brick = StackObject.gameObject;
             stackParent = CharacterBase.StackParent;
 	        refObject = CharacterBase.RefObject;
 	
@@ -44,7 +46,7 @@ public class StackManager : Singleton<StackManager>
 	        brick.transform.localPosition = desiredPos; 
 	        
 	        refObject.transform.position = brick.transform.position;
-        // }
+         }
     }
 
     public void UseStackObject(List<GameObject> currentList)
@@ -52,6 +54,9 @@ public class StackManager : Singleton<StackManager>
         // executionState = ExecutionState.BUILD;
         // if(executionState != ExecutionState.COLLECT)
         // {
+            stackObject.isCollected = true;
+            //currentList[currentList.Count -1] = StackObject.gameObject;
+
             distanceBetweenStairsY = refStair.transform.localScale.y / 2;
             distanceBetweenStairsZ = refStair.transform.localScale.z / 2;
 
