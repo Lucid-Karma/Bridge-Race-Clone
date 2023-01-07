@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ExecutionState
-{
-    COLLECT,
-    BUILD
-}
 public class StackManager : Singleton<StackManager>
 {
-    public List<GameObject> currentList = new List<GameObject>();
+    private List<GameObject> currentList = new List<GameObject>();
+    private List<GameObject> collectedList = new List<GameObject>();
 
-    public ExecutionState executionState;
 
     #region CollectVariables
     private GameObject stackParent;
@@ -25,14 +20,11 @@ public class StackManager : Singleton<StackManager>
     private float distanceBetweenStairsY, distanceBetweenStairsZ;
     #endregion
 
-StackObject stackObject = new StackObject(false);
 
     public void CollectStackObject(GameObject brick)
     {
-        if (!stackObject.isCollected)
+        if (!collectedList.Contains(brick))
         {
-            // StackObject stackObject = new StackObject(true);
-            //GameObject brick = StackObject.gameObject;
             stackParent = CharacterBase.StackParent;
 	        refObject = CharacterBase.RefObject;
 	
@@ -46,16 +38,15 @@ StackObject stackObject = new StackObject(false);
 	        brick.transform.localPosition = desiredPos; 
 	        
 	        refObject.transform.position = brick.transform.position;
-         }
+        }
     }
 
-    public void UseStackObject(List<GameObject> currentList)
+    public void UseStackObject(List<GameObject> currentList, GameObject currentCharacter)
     {
-        // executionState = ExecutionState.BUILD;
-        // if(executionState != ExecutionState.COLLECT)
-        // {
-            stackObject.isCollected = true;
-            //currentList[currentList.Count -1] = StackObject.gameObject;
+	    // distanceBetweenObjects = currentCharacter.transform.GetChild(1).GetChild(0).transform.localScale.y;
+
+        // Vector3 dPos = currentCharacter.transform.GetChild(1).GetChild(0).transform.localPosition;
+	    // dPos.y -= distanceBetweenObjects / 2;
 
             distanceBetweenStairsY = refStair.transform.localScale.y / 2;
             distanceBetweenStairsZ = refStair.transform.localScale.z / 2;
@@ -69,8 +60,23 @@ StackObject stackObject = new StackObject(false);
             currentList[currentList.Count -1].transform.localPosition = desiredPos;
 
             refStair.transform.position = currentList[currentList.Count -1].transform.position;
-            //currentList.Remove(currentList[currentList.Count -1]);
+            collectedList.Add(currentList[currentList.Count -1]);
             currentList.RemoveAt(currentList.Count - 1);
-        //}
+
+            currentCharacter.transform.GetChild(1).GetChild(0).transform.position = 
+            currentList[currentList.Count -1].transform.position;
+        
+        // currentCharacter.transform.GetChild(1).GetChild(0).transform.position = dPos;
     }
+
+    // public GameObject SetDesiredPos(GameObject brick)
+    // {
+    //     if (!collectedList.Contains(brick))
+    //     {
+    //         stackParent = CharacterBase.StackParent;
+	//         refObject = CharacterBase.RefObject;
+
+    //         return refObject;
+    //     }
+    // }
 }

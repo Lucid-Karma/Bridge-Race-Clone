@@ -5,22 +5,24 @@ using System.Linq;
 
 public class Stair : MonoBehaviour//, IInteractable
 {
-    public static bool isTriggered = false;
+    public static int isblue, isgreen, isred;
 
     void OnTriggerEnter(Collider other)
     {
-        isTriggered = true;
-        StackManager.Instance.UseStackObject(GetCharacterList(other.gameObject));
-    }
+        StackManager.Instance.UseStackObject(GetCharacterList(other.gameObject), other.gameObject);
 
-    void OnTriggerStay(Collider other)
-    {
-        isTriggered = true;
-    }
-
-    void OnTriggerExit(Collider other)
-    {
-        isTriggered = false;
+        if (other.gameObject.CompareTag("blue"))
+        {
+            isblue ++;
+        }
+        else if (other.gameObject.CompareTag("green"))
+        {
+            isgreen ++;
+        }
+        else if (other.gameObject.CompareTag("red"))
+        {
+            isred ++;
+        }
     }
 
     // // public void Interact()

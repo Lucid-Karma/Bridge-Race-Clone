@@ -24,13 +24,6 @@ public class Player : CharacterBase
     //float y = 0;
     public void FixedUpdate()
     {
-        if (Stair.isTriggered && joystick.Vertical != 0)
-        {
-            
-            
-            //transform.position = new Vector3(transform.position.x, y, transform.position.z);
-        }
-        else
             Move();
 
         if (joystick.Horizontal != 0 || joystick.Vertical != 0)
