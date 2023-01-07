@@ -13,6 +13,7 @@ public abstract class CharacterBase : MonoBehaviour
     public static List<GameObject> greenBrickList = new List<GameObject>();
     public static List<GameObject> redBrickList = new List<GameObject>();
 
+    //StackObject stackObject = new StackObject(true);
 
     // private GameObject stackParent;
     // public GameObject StackParent
