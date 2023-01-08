@@ -36,17 +36,15 @@ public class StackManager : Singleton<StackManager>
 	        
 	        brick.transform.localRotation = Quaternion.identity;
 	        brick.transform.localPosition = desiredPos; 
-	        
-	        refObject.transform.position = brick.transform.position;
+
+            refObject.transform.position = brick.transform.position;
         }
     }
 
-    public void UseStackObject(List<GameObject> currentList, GameObject currentCharacter)
+    //int number;
+    public void UseStackObject(List<GameObject> currentList
+    /*GameObject currentCharacter/*, int num*/)
     {
-	    // distanceBetweenObjects = currentCharacter.transform.GetChild(1).GetChild(0).transform.localScale.y;
-
-        // Vector3 dPos = currentCharacter.transform.GetChild(1).GetChild(0).transform.localPosition;
-	    // dPos.y -= distanceBetweenObjects / 2;
 
             distanceBetweenStairsY = refStair.transform.localScale.y / 2;
             distanceBetweenStairsZ = refStair.transform.localScale.z / 2;
@@ -63,20 +61,12 @@ public class StackManager : Singleton<StackManager>
             collectedList.Add(currentList[currentList.Count -1]);
             currentList.RemoveAt(currentList.Count - 1);
 
-            currentCharacter.transform.GetChild(1).GetChild(0).transform.position = 
-            currentList[currentList.Count -1].transform.position;
-        
-        // currentCharacter.transform.GetChild(1).GetChild(0).transform.position = dPos;
+            // currentCharacter.transform.GetChild(1).GetChild(0).transform.position = 
+            // currentList[currentList.Count -1].transform.position;
+            Vector3 newRefPos = CharacterBase.SRefObject.transform.localPosition;
+            newRefPos.y -= 1;
+            CharacterBase.SRefObject.transform.localPosition = newRefPos;
+
+            //number = num;
     }
-
-    // public GameObject SetDesiredPos(GameObject brick)
-    // {
-    //     if (!collectedList.Contains(brick))
-    //     {
-    //         stackParent = CharacterBase.StackParent;
-	//         refObject = CharacterBase.RefObject;
-
-    //         return refObject;
-    //     }
-    // }
 }
