@@ -2,15 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum BrickType
-{
-    BLUE,
-    GREEN,
-    RED
-}
+
 public class CharactersArbiter : MonoBehaviour
 {
-    public BrickType brickType;
 
     public List<GameObject> characterList = new List<GameObject>();
     private int cIndex = 0;

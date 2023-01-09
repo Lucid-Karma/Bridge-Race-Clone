@@ -42,6 +42,7 @@ public class StackManager : Singleton<StackManager>
     }
 
     //int number;
+    Vector3 newRefPos;
     public void UseStackObject(List<GameObject> currentList
     /*GameObject currentCharacter/*, int num*/)
     {
@@ -63,7 +64,7 @@ public class StackManager : Singleton<StackManager>
 
             // currentCharacter.transform.GetChild(1).GetChild(0).transform.position = 
             // currentList[currentList.Count -1].transform.position;
-            Vector3 newRefPos = CharacterBase.SRefObject.transform.localPosition;
+            newRefPos = CharacterBase.SRefObject.transform.localPosition;
             newRefPos.y -= 1;
             CharacterBase.SRefObject.transform.localPosition = newRefPos;
 

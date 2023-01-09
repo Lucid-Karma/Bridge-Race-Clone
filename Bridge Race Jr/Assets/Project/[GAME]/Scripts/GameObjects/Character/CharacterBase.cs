@@ -38,10 +38,10 @@ public abstract class CharacterBase : MonoBehaviour
     //     }
     // }
 
-    void Awake()
-    {
-        this.enabled = false;
-    }
+    // void Awake()
+    // {
+    //     this.enabled = false;
+    // }
 
     public abstract void Move();
 
