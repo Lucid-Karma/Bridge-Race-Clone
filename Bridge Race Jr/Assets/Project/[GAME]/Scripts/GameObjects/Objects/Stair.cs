@@ -5,14 +5,19 @@ using System.Linq;
 
 public class Stair : MonoBehaviour
 {
-    public int isblue, isgreen, isred;
 
     void OnTriggerEnter(Collider other)
     {
-        //StackManager.Instance.GetNewPos(other.gameObject);
-        StackManager.Instance.UseStackObject(GetCharacterList(other.gameObject) 
+        if (other.gameObject.name == "BlueCharacter" || 
+        other.gameObject.name == "GreenCharacter" ||
+        other.gameObject.name == "RedCharacter")
+        {
+            StackManager.Instance.UseStackObject(GetCharacterList(other.gameObject) 
         /*,other.gameObject/*, GetCharacterNum(other.gameObject)*/);
         Debug.Log(other.gameObject.name);
+        }
+        // StackManager.Instance.UseStackObject(GetCharacterList(other.gameObject) 
+        // /*,other.gameObject/*, GetCharacterNum(other.gameObject)*/);
     }
 
     public List<GameObject> GetCharacterList(GameObject character)
@@ -30,25 +35,5 @@ public class Stair : MonoBehaviour
             return CharacterBase.redBrickList;
         }
         else    return null;
-    }
-
-    public int GetCharacterNum(GameObject character)
-    {
-        if (character.CompareTag("blue"))
-        {
-            isblue ++;
-            return isblue;
-        }
-        else if (character.CompareTag("green"))
-        {
-            isgreen ++;
-            return isgreen;
-        }
-        else //if (character.CompareTag("red"))
-        {
-            isred ++;
-            return isred;
-        }
-        //return 0;
     }
 }
