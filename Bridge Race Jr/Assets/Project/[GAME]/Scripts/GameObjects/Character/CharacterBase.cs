@@ -15,6 +15,8 @@ public abstract class CharacterBase : MonoBehaviour
     public static List<GameObject> greenBrickList = new List<GameObject>();
     public static List<GameObject> redBrickList = new List<GameObject>();
 
+    public List<GameObject> usedBrickList = new List<GameObject>(); // This list is created to control whether a brick is already stack or not, to call only one of the StackManager main methods when a character triggered with refObject and brick at he same time because sometimes it causes some bugs due to not knowing currentList's last element. 
+
     //StackObject stackObject = new StackObject(true);
 
     // private GameObject stackParent;
@@ -49,7 +51,7 @@ public abstract class CharacterBase : MonoBehaviour
     {
         IInteractable interactable = other.GetComponent<IInteractable>();
 
-        if (interactable != null && other.gameObject.CompareTag(gameObject.tag) )//|| other.gameObject.CompareTag("Stair"))
+        if (interactable != null && other.gameObject.CompareTag(gameObject.tag) && !usedBrickList.Contains(other.gameObject))//|| other.gameObject.CompareTag("Stair"))
         {
             if (other.gameObject.CompareTag("blue"))
             {
@@ -65,6 +67,7 @@ public abstract class CharacterBase : MonoBehaviour
             }
             
             interactable.Interact();
+            usedBrickList.Add(other.gameObject);
         }
     }
 }

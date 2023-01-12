@@ -35,23 +35,29 @@ public class Player : CharacterBase
 
    public override void OnTriggerEnter(Collider other)
    {
+        if (!enabled) return;
+        
         StackParent = stackParent;
-        RefObject = refObject;
+        //RefObject = refObject;
 
         SRefObject = refObject;
+        RefObject = SRefObject;
 
         base.OnTriggerEnter(other);
         // Debug.Log(transform.position);
         // y += 0.5f;
         // Debug.Log(transform.position);
 
-        // if(other.gameObject.CompareTag("Stair"))
-        // {
-        //     if (joystick.Vertical != 0)
-        //     {
-        //         rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, joystick.Vertical * moveSpeed * Time.fixedDeltaTime, rb.velocity.z); 
-        //     }
-        // }
+        if(other.gameObject.CompareTag("Stair"))
+        {
+            // if (joystick.Vertical != 0)
+            // {
+            //     rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, joystick.Vertical * moveSpeed * Time.fixedDeltaTime, rb.velocity.z); 
+            // }
+
+            //transform.position.y = RefObject.transform.position.y;
+            transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+        }
    }
 
    public override void Move()

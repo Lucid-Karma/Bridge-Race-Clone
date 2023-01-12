@@ -32,7 +32,7 @@ public class StackManager : Singleton<StackManager>
 	
 	        brick.transform.parent = stackParent.transform;
 	        Vector3 desiredPos = refObject.transform.localPosition;
-	        desiredPos.y += distanceBetweenObjects / 2;     //problematic.
+	        desiredPos.y += distanceBetweenObjects;     //problematic.
 	        
 	        brick.transform.localRotation = Quaternion.identity;
 	        brick.transform.localPosition = desiredPos; 
@@ -46,9 +46,11 @@ public class StackManager : Singleton<StackManager>
     public void UseStackObject(List<GameObject> currentList
     /*GameObject currentCharacter/*, int num*/)
     {
-
-            distanceBetweenStairsY = refStair.transform.localScale.y / 2;
-            distanceBetweenStairsZ = refStair.transform.localScale.z / 2;
+        if(currentList[currentList.Count -1] == null)   return;
+        // if(currentList[currentList.Count -1] != null /*currentList.Count >= 1*/)
+        // {
+            distanceBetweenStairsY = refStair.transform.localScale.y;
+            distanceBetweenStairsZ = refStair.transform.localScale.z;
 
             currentList[currentList.Count -1].transform.parent = stairParent.transform;
             Vector3 desiredPos = refStair.transform.localPosition;
@@ -69,5 +71,6 @@ public class StackManager : Singleton<StackManager>
             CharacterBase.SRefObject.transform.localPosition = newRefPos;
 
             //number = num;
+        //}
     }
 }
