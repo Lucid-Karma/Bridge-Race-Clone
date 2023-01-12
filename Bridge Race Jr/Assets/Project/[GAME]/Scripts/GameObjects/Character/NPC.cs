@@ -55,6 +55,8 @@ public class NPC : CharacterBase
 
     public override void OnTriggerEnter(Collider other)
     {
+        if (!enabled) return;
+        
         StackParent = stackParent;
         RefObject = refObject;
         
