@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class StackManager : Singleton<StackManager>
 {
-    private List<GameObject> currentList = new List<GameObject>();
-    private List<GameObject> collectedList = new List<GameObject>();
+    public List<GameObject> currentList = new List<GameObject>();
+    private List<GameObject> usedList = new List<GameObject>();
 
 
     #region CollectVariables
@@ -18,12 +18,14 @@ public class StackManager : Singleton<StackManager>
     [SerializeField] private GameObject stairParent;
     [SerializeField] private GameObject refStair;
     private float distanceBetweenStairsY, distanceBetweenStairsZ;
+
+    Vector3 newRefPos;
     #endregion
 
 
     public void CollectStackObject(GameObject brick)
     {
-        if (!collectedList.Contains(brick))
+        if (!usedList.Contains(brick))
         {
             stackParent = CharacterBase.StackParent;
 	        refObject = CharacterBase.RefObject;
@@ -41,14 +43,14 @@ public class StackManager : Singleton<StackManager>
         }
     }
 
-    //int number;
-    Vector3 newRefPos;
-    public void UseStackObject(List<GameObject> currentList
-    /*GameObject currentCharacter/*, int num*/)
+
+    
+    public void UseStackObject(List<GameObject> currentList)
     {
-        if(currentList[currentList.Count -1] == null)   return;
-        // if(currentList[currentList.Count -1] != null /*currentList.Count >= 1*/)
-        // {
+        if(currentList.Count >= 1)
+        {
+            this.currentList = currentList;
+
             distanceBetweenStairsY = refStair.transform.localScale.y;
             distanceBetweenStairsZ = refStair.transform.localScale.z;
 
@@ -61,16 +63,12 @@ public class StackManager : Singleton<StackManager>
             currentList[currentList.Count -1].transform.localPosition = desiredPos;
 
             refStair.transform.position = currentList[currentList.Count -1].transform.position;
-            collectedList.Add(currentList[currentList.Count -1]);
+            usedList.Add(currentList[currentList.Count -1]);
             currentList.RemoveAt(currentList.Count - 1);
 
-            // currentCharacter.transform.GetChild(1).GetChild(0).transform.position = 
-            // currentList[currentList.Count -1].transform.position;
             newRefPos = CharacterBase.SRefObject.transform.localPosition;
             newRefPos.y -= 1;
             CharacterBase.SRefObject.transform.localPosition = newRefPos;
-
-            //number = num;
-        //}
+        }
     }
 }

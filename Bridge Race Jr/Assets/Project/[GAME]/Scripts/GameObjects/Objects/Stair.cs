@@ -17,7 +17,6 @@ public class Stair : MonoBehaviour
         // Debug.Log(other.gameObject.name);
         // }
          StackManager.Instance.UseStackObject(GetCharacterList(other.gameObject) );
-         Debug.Log(other.gameObject.name);
         // /*,other.gameObject/*, GetCharacterNum(other.gameObject)*/);
     }
 

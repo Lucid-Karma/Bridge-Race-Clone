@@ -51,7 +51,7 @@ public abstract class CharacterBase : MonoBehaviour
     {
         IInteractable interactable = other.GetComponent<IInteractable>();
 
-        if (interactable != null && other.gameObject.CompareTag(gameObject.tag) && !usedBrickList.Contains(other.gameObject))//|| other.gameObject.CompareTag("Stair"))
+        if (interactable != null && other.gameObject.CompareTag(gameObject.tag) && !usedBrickList.Contains(other.gameObject))
         {
             if (other.gameObject.CompareTag("blue"))
             {

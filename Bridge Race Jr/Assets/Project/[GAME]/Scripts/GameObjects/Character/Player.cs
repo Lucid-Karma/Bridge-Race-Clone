@@ -12,15 +12,13 @@ public class Player : CharacterBase
     private Animator animator;
 
     private Rigidbody rb;
-//Vector3 pos;
+
     void Awake()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
-        animator = /*gameObject.*/GetComponent<Animator>();
-        //pos.y = 0.6f;
+        rb = GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>();
     }
 
-    //float y = 0;
     public void FixedUpdate()
     {
             Move();
@@ -37,31 +35,30 @@ public class Player : CharacterBase
    {
         if (!enabled) return;
         
+
         StackParent = stackParent;
-        //RefObject = refObject;
 
         SRefObject = refObject;
         RefObject = SRefObject;
 
+
         base.OnTriggerEnter(other);
-        // Debug.Log(transform.position);
-        // y += 0.5f;
-        // Debug.Log(transform.position);
 
-        if(other.gameObject.CompareTag("Stair"))
+        if(other.gameObject.CompareTag("Stair") && joystick.Vertical > 0)
         {
-            // if (joystick.Vertical != 0)
-            // {
-            //     rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, joystick.Vertical * moveSpeed * Time.fixedDeltaTime, rb.velocity.z); 
-            // }
-
-            //transform.position.y = RefObject.transform.position.y;
-            transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+            transform.position = new Vector3(transform.position.x, other.gameObject.transform.position.y + 0.5f
+            , transform.position.z);
         }
    }
 
    public override void Move()
    {
-       rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, rb.velocity/*pos*/.y, joystick.Vertical * moveSpeed * Time.fixedDeltaTime); 
+       rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, joystick.Vertical * moveSpeed * Time.fixedDeltaTime); 
    }
+
+//    IEnumerator GoDownStairs()
+//    {
+//         yield return new WaitForSeconds(.25f);
+//         transform.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
+//    }
 }
