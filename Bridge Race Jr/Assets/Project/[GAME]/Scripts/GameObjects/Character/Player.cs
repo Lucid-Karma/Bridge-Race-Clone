@@ -41,10 +41,9 @@ public class Player : CharacterBase
         SRefObject = refObject;
         RefObject = SRefObject;
 
-
         base.OnTriggerEnter(other);
 
-        if(other.gameObject.CompareTag("Stair") && joystick.Vertical > 0)
+        if(inBridge && joystick.Vertical > 0)
         {
             transform.position = new Vector3(transform.position.x, other.gameObject.transform.position.y + 0.5f
             , transform.position.z);
@@ -56,9 +55,29 @@ public class Player : CharacterBase
        rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, joystick.Vertical * moveSpeed * Time.fixedDeltaTime); 
    }
 
-//    IEnumerator GoDownStairs()
-//    {
-//         yield return new WaitForSeconds(.25f);
-//         transform.position = new Vector3(transform.position.x, transform.position.y - 1, transform.position.z);
-//    }
+   IEnumerator GoDownStairs()
+   {
+        yield return new WaitForSeconds(.00025f);
+        transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
+   }
+
+
+    void OnTriggerExit(Collider other)
+    {
+        IInteractable interactable = other.GetComponent<IInteractable>();
+
+        if(other.gameObject.name == "bridgeColliderArea")
+        {
+            inBridge = false;
+        }
+
+        if (inBridge)
+        {
+            if(interactable != null && joystick.Vertical < 0)
+            {
+                transform.position = new Vector3(transform.position.x, other.gameObject.transform.position.y - 0.5f
+                , transform.position.z);
+            }
+        }
+    }
 }
