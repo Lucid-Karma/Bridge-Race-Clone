@@ -55,12 +55,6 @@ public class Player : CharacterBase
        rb.velocity = new Vector3(joystick.Horizontal * moveSpeed * Time.fixedDeltaTime, rb.velocity.y, joystick.Vertical * moveSpeed * Time.fixedDeltaTime); 
    }
 
-   IEnumerator GoDownStairs()
-   {
-        yield return new WaitForSeconds(.00025f);
-        transform.position = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
-   }
-
 
     void OnTriggerExit(Collider other)
     {

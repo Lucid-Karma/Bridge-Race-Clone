@@ -15,8 +15,8 @@ public class StackManager : Singleton<StackManager>
     #endregion
 
     #region UseVariables
-    [SerializeField] private GameObject stairParent;
-    [SerializeField] private GameObject refStair;
+    /*[SerializeField]*/ private GameObject stairParent;
+    /*[SerializeField]*/ private GameObject refStair;
     private float distanceBetweenStairsY, distanceBetweenStairsZ;
 
     Vector3 newRefPos;
@@ -34,7 +34,7 @@ public class StackManager : Singleton<StackManager>
 	
 	        brick.transform.parent = stackParent.transform;
 	        Vector3 desiredPos = refObject.transform.localPosition;
-	        desiredPos.y += distanceBetweenObjects;     //problematic.
+	        desiredPos.y += distanceBetweenObjects;    
 	        
 	        brick.transform.localRotation = Quaternion.identity;
 	        brick.transform.localPosition = desiredPos; 
@@ -44,8 +44,8 @@ public class StackManager : Singleton<StackManager>
     }
 
 
-    
-    public void UseStackObject(List<GameObject> currentList)
+    private float stairScale;
+    public void UseStackObject(List<GameObject> currentList, GameObject stairParent, GameObject refStair)
     {
         if(currentList.Count >= 1)
         {
@@ -53,6 +53,8 @@ public class StackManager : Singleton<StackManager>
 
             distanceBetweenStairsY = refStair.transform.localScale.y;
             distanceBetweenStairsZ = refStair.transform.localScale.z;
+
+            stairScale = refStair.transform.localScale.x;
 
             currentList[currentList.Count -1].transform.parent = stairParent.transform;
             Vector3 desiredPos = refStair.transform.localPosition;
@@ -63,6 +65,7 @@ public class StackManager : Singleton<StackManager>
             currentList[currentList.Count -1].transform.localPosition = desiredPos;
 
             refStair.transform.position = currentList[currentList.Count -1].transform.position;
+            currentList[currentList.Count -1].transform.localScale = new Vector3(stairScale, 1, 1);
             usedList.Add(currentList[currentList.Count -1]);
             currentList.RemoveAt(currentList.Count - 1);
 

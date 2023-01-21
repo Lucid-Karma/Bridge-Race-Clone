@@ -17,9 +17,8 @@ public class NPC : CharacterBase
     private Animator animator;
 
     NPC_PositionCreater positionCreate = new NPC_PositionCreater();
-    
-    //NPC_States currentState;
 
+    [SerializeField] private GameObject[] bridge;
 
     void Awake()
     {
@@ -27,6 +26,8 @@ public class NPC : CharacterBase
         animator = GetComponent<Animator>();
 
         targetPos.SetActive(false);
+
+        //bridge = new GameObject[];
     }
 
     void OnEnable()
@@ -71,9 +72,28 @@ public class NPC : CharacterBase
         }
     }
 
-    // public void SwitchState(NPC_States nextState)
-    // {
-    //     currentState = nextState;
-    //     currentState.EnterState(this);
-    // }
+    #region BUILD
+
+    float collectTime;
+    void Buid()
+    {
+        collectTime = Random.Range(3, 10);
+
+        StartCoroutine(BuildWait(collectTime));
+    }
+    IEnumerator BuildWait(float duration)
+    {
+        
+        yield return new WaitForSeconds(duration);
+    }
+
+    int bridgeIndex;
+    Transform GetBridgeTransform()
+    {
+        bridgeIndex = Random.Range(0, bridge.Length);
+
+        return bridge[bridgeIndex].transform;
+    }
+    
+    #endregion
 }
