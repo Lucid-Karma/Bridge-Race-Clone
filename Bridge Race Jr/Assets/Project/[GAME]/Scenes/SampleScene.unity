@@ -1150,6 +1150,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fdf62bfeb0eda48a6442a50b8c57ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentStair: {fileID: 717778474}
+  referanceStair: {fileID: 753833486}
 --- !u!65 &753833489
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1170,7 +1172,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 753833486}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1759,7 +1761,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124851454}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1814,6 +1816,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fdf62bfeb0eda48a6442a50b8c57ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentStair: {fileID: 1951132904}
+  referanceStair: {fileID: 1124851454}
 --- !u!1 &1195845203
 GameObject:
   m_ObjectHideFlags: 0
@@ -1923,8 +1927,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 29.569172, z: 27.653229}
-  m_Center: {x: 0, y: 14.291414, z: 13.82605}
+  m_Size: {x: 1, y: 64.59272, z: 27.653229}
+  m_Center: {x: 0, y: 31.803188, z: 13.82605}
 --- !u!23 &1503438430
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1993,7 +1997,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1506540901
 Transform:
   m_ObjectHideFlags: 0
@@ -2090,7 +2094,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1585453196
 Transform:
   m_ObjectHideFlags: 0
@@ -2302,8 +2306,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentList: []
-  stairParent: {fileID: 1951132904}
-  refStair: {fileID: 1124851454}
 --- !u!4 &1705048574
 Transform:
   m_ObjectHideFlags: 0
@@ -2416,6 +2418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6fdf62bfeb0eda48a6442a50b8c57ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentStair: {fileID: 953579249}
+  referanceStair: {fileID: 1843710819}
 --- !u!65 &1843710822
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2436,7 +2440,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843710819}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

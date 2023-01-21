@@ -17,10 +17,6 @@ public abstract class CharacterBase : MonoBehaviour
 
     public List<GameObject> usedBrickList = new List<GameObject>(); // This list is created to control whether a brick is already stack or not, to call only one of the StackManager main methods when a character triggered with refObject and brick at he same time because sometimes it causes some bugs due to not knowing currentList's last element. 
 
-    public GameObject stepRayUpper;
-    public GameObject stepRayLower;
-    public float stepHeight = 1f;
-    public float stepSmooth = 2f;
 
     public bool inBridge;
 

@@ -5,19 +5,17 @@ using System.Linq;
 
 public class Stair : MonoBehaviour
 {
+    public GameObject parentStair;
+    public GameObject referanceStair;
 
+    void Awake()
+    {
+        parentStair = gameObject.transform.parent.gameObject;
+        referanceStair = gameObject;
+    }
     void OnTriggerEnter(Collider other)
     {
-        // if (other.gameObject.name == "BlueCharacter" || 
-        // other.gameObject.name == "GreenCharacter" ||
-        // other.gameObject.name == "RedCharacter")
-        // {
-        //     StackManager.Instance.UseStackObject(GetCharacterList(other.gameObject) 
-        // /*,other.gameObject/*, GetCharacterNum(other.gameObject)*/);
-        // Debug.Log(other.gameObject.name);
-        // }
-         StackManager.Instance.UseStackObject(GetCharacterList(other.gameObject) );
-        // /*,other.gameObject/*, GetCharacterNum(other.gameObject)*/);
+        StackManager.Instance.UseStackObject(GetCharacterList(other.gameObject), parentStair, referanceStair);
     }
 
     public List<GameObject> GetCharacterList(GameObject character)
