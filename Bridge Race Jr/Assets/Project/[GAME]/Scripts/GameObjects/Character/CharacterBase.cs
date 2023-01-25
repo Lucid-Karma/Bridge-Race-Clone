@@ -19,34 +19,7 @@ public abstract class CharacterBase : MonoBehaviour
 
 
     public bool inBridge;
-
-    //StackObject stackObject = new StackObject(true);
-
-    // private GameObject stackParent;
-    // public GameObject StackParent
-    // {
-    //     get
-    //     {
-    //         // if(stackParent != null)
-    //         // {
-    //              return stackParent;
-    //         // }
-    //         // else
-    //         // {
-    //         //     return null;
-    //         // }
-    //     }
-
-    //     set
-    //     {
-    //         stackParent = value;
-    //     }
-    // }
-
-    // void Awake()
-    // {
-    //     this.enabled = false;
-    // }
+    
 
     public abstract void Move();
 

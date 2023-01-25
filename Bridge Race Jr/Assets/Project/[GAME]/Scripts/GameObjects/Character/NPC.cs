@@ -2,6 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+public enum ExecutingState
+{
+    BEAR,
+    PATROL
+}
 public class NPC : CharacterBase
 {
     public GameObject stackParent;
@@ -9,16 +15,24 @@ public class NPC : CharacterBase
     
     Vector3 direction;
     Quaternion rotation;
-    [SerializeField] private float turnSpeed, moveSpeed;
+    /*[SerializeField] private*/ public float turnSpeed, moveSpeed;
     Vector3 newPos;
     public GameObject targetPos;
 
-    private Rigidbody rb;
+    public Rigidbody rb;
     private Animator animator;
 
     NPC_PositionCreater positionCreate = new NPC_PositionCreater();
 
     [SerializeField] private GameObject[] bridge;
+
+
+    NPC_States currentState;
+
+    public PatrolState patrolState = new PatrolState();
+    public BearState bearState = new BearState();
+
+    public ExecutingState executingState;
 
     void Awake()
     {
@@ -26,8 +40,6 @@ public class NPC : CharacterBase
         animator = GetComponent<Animator>();
 
         targetPos.SetActive(false);
-
-        //bridge = new GameObject[];
     }
 
     void OnEnable()
@@ -37,14 +49,20 @@ public class NPC : CharacterBase
 
     void Start()
     {
+        executingState = ExecutingState.PATROL;
+
+        GetBridgeTransform();
+        
+        currentState = patrolState;
+        currentState.EnterState(this);  // ????
+
         newPos = positionCreate.SetNPCPosition(targetPos).transform.position;
         animator.SetBool("isRunning", true);
     }
 
     void FixedUpdate()
     {
-        Move();
-        rb.MovePosition(transform.position + (transform.forward * moveSpeed * Time.fixedDeltaTime));
+        currentState.UpdateState(this);
     }
 
     public override void Move()
@@ -58,14 +76,26 @@ public class NPC : CharacterBase
     {
         if (!enabled) return;
         
+        // StackParent = stackParent;
+        // RefObject = refObject;
         StackParent = stackParent;
-        RefObject = refObject;
+
+        SRefObject = refObject;
+        RefObject = SRefObject;
         
         base.OnTriggerEnter(other);
+
+        if(inBridge && GetList().Count > 0)
+        {
+            transform.position = new Vector3(transform.position.x, other.gameObject.transform.position.y + 0.5f
+            , transform.position.z);
+        }
     }
 
     void OnTriggerStay(Collider other)
     {
+        if (!enabled) return;
+
         if (other.gameObject == targetPos)
         {
             newPos = positionCreate.SetNPCPosition(targetPos).transform.position;
@@ -75,25 +105,81 @@ public class NPC : CharacterBase
     #region BUILD
 
     float collectTime;
-    void Buid()
+    public float GetBuidTime()
     {
-        collectTime = Random.Range(3, 10);
-
-        StartCoroutine(BuildWait(collectTime));
+        collectTime = Random.Range(3f, 20f);
+        return collectTime;
     }
-    IEnumerator BuildWait(float duration)
+    public IEnumerator BuildWait(float duration)
     {
-        
         yield return new WaitForSeconds(duration);
+        executingState = ExecutingState.BEAR;
     }
 
     int bridgeIndex;
-    Transform GetBridgeTransform()
+    Transform bridgeTransform;
+    public void GetBridgeTransform()
     {
         bridgeIndex = Random.Range(0, bridge.Length);
+        bridgeTransform = bridge[bridgeIndex].transform;
+    }
 
-        return bridge[bridgeIndex].transform;
+    public void MoveToBridge()
+    {
+        direction = (bridgeTransform.position - transform.position).normalized;
+        rotation = Quaternion.LookRotation(new Vector3(direction.x,0f,direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed);
+    }
+    Vector3 goBackPos;
+    public int stairStep;
+    public void LeaveBridge()
+    {
+        stairStep = GetList().Count;
+        goBackPos = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y
+            , gameObject.transform.position.z * -1);
+
+        direction = (goBackPos - transform.position).normalized;
+        rotation = Quaternion.LookRotation(new Vector3(direction.x,0f,direction.z));
+        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, turnSpeed);
+
+        if(stairStep == 0)  executingState = ExecutingState.PATROL;
+    }
+
+    public List<GameObject> GetList()
+    {
+        if(gameObject.CompareTag("blue"))   return blueBrickList;
+        else if(gameObject.CompareTag("green"))     return greenBrickList;
+        else if(gameObject.CompareTag("red"))   return redBrickList;
+
+        return null;
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (!enabled) return;
+
+        IInteractable interactable = other.GetComponent<IInteractable>();
+
+        if(other.gameObject.name == "bridgeColliderArea")
+        {
+            inBridge = false;
+        }
+
+        if (inBridge)
+        {
+            if(interactable != null && GetList().Count <= 0)
+            {
+                transform.position = new Vector3(transform.position.x, other.gameObject.transform.position.y - 0.5f
+                , transform.position.z);
+            }
+        }
     }
     
     #endregion
+
+    public void SwitchState(NPC_States nextState)
+    {
+        currentState = nextState;
+        currentState.EnterState(this);
+    }
 }
